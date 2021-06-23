@@ -23,7 +23,7 @@ router=APIRouter(
     tags=['Gat_Call_Letter'])
 
 @router.post('/gat_call_letter', status_code=status.HTTP_201_CREATED )
-def create(request:schemas.Gat_call_letter,db:Session=Depends(get_db)):
+def create(request:schemas.Gat_call_letter,db:Session=Depends(get_db),get_current_user:schemas.Admin=Depends(oauth2.get_current_user)):
     new_users=models.Gat_call_letter(
           fullname=request.fullname,
           appno=request.appno,

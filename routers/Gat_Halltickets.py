@@ -24,7 +24,7 @@ router=APIRouter(
       )
 
 @router.post('/gat_hallticket',status_code=status.HTTP_201_CREATED)
-def create(request:schemas.GatHallticket,db : Session=Depends(get_db)):
+def create(request:schemas.GatHallticket,db : Session=Depends(get_db),get_current_user:schemas.Admin=Depends(oauth2.get_current_user)):
       gat_user=models.GatHallticket(
             id=request.id,
             email_id=request.email_id,
