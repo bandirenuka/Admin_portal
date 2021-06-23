@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import List,Optional
 class Admin(BaseModel):
       username:str
       password:str
@@ -17,6 +17,15 @@ class ShowAdmin(BaseModel):
       email_id:str
       class Config():
             orm_mode=True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email_id: Optional[str] = None
             
 class GatHallticket(BaseModel):
       id:int
@@ -75,7 +84,10 @@ class Gat_call_letter(BaseModel):
       gen_status:str
       email_status:str
       class Config():
-            orm_mode=True  
+            orm_mode=True
+
+
+            
 
 
 class show_Gat_call_Letter(BaseModel):
